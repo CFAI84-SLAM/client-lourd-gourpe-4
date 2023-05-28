@@ -44,6 +44,26 @@ public class Produits {
     public String getCategorie() {
         return categorie;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrixHT(double prixHT) {
+        this.prixHT = prixHT;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
     
     
     
