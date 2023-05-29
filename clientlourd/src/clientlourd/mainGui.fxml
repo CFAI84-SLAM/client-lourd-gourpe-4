@@ -49,7 +49,7 @@
             <TextField fx:id="tfCategorie" />
          </children>
       </VBox>
-      <TableView fx:id="tvProduits" layoutX="285.0" layoutY="84.0" onMouseClicked="#handleMouseAction" prefHeight="474.0" prefWidth="484.0">
+      <TableView fx:id="tvProduits" layoutX="285.0" layoutY="84.0" onMouseClicked="#handleMouseAction" prefHeight="387.0" prefWidth="484.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="54.0" text="ID" />
           <TableColumn fx:id="colPhoto" prefWidth="146.0" text="Photo" />

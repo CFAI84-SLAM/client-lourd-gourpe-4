@@ -152,15 +152,15 @@ public class MainGuiController implements Initializable {
         int cat = 0;
        if (null != tfCategorie.getText()) switch (tfCategorie.getText()) {
             case "entrée":{
-                 cat = 6;
+                 cat = 1;
                     break;
                 }
             case "plat":{
-                 cat = 7;
+                 cat = 2;
                     break;
                 }
             case "dessert":{
-                cat = 8;
+                cat = 3;
                     break;
                 }
             default:
@@ -181,15 +181,15 @@ public class MainGuiController implements Initializable {
         int cat = 0;
        if (null != tfCategorie.getText()) switch (tfCategorie.getText()) {
             case "entrée":{
-                 cat = 6;
+                 cat = 1;
                     break;
                 }
             case "plat":{
-                 cat = 7;
+                 cat = 2;
                     break;
                 }
             case "dessert":{
-                cat = 8;
+                cat = 3;
                     break;
                 }
             default:
