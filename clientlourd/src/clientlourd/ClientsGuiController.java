@@ -110,7 +110,7 @@ public class ClientsGuiController implements Initializable {
     public ObservableList<Clients> getClientsList() {
         ObservableList<Clients> clientsList = FXCollections.observableArrayList();
         Connection conn = getConnection();
-        String query = "SELECT Id_Utilisateur, nom, prenom, tel, email, adresse, dateNaissance  FROM Utilisateur";
+        String query = "SELECT Id_Utilisateur, nom, prenom, tel, email, adresse, dateNaissance  FROM Utilisateur WHERE roles = '[\"ROLE_USER\"]'";
                 
         Statement st;
         ResultSet rs;
