@@ -22,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 
@@ -41,12 +42,13 @@ public class AuthentificationController extends Password implements Initializabl
     private TextField tfEmail;
     @FXML
     private TextField tfMdp;
+    @FXML
+    private Label conLab;
 
   
     
-    @FXML
     public void switchToMenu(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(getClass().getResource("mainGui.fxml"));
+        root = FXMLLoader.load(getClass().getResource("AdminMenu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -63,7 +65,7 @@ public class AuthentificationController extends Password implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        conLab.setText("");
     }
     
     public Connection getConnection() {
@@ -102,12 +104,14 @@ public class AuthentificationController extends Password implements Initializabl
     }
     
     
+    @FXML
     public void connect(ActionEvent event) throws Exception {
         Connection conn = getConnection();
         PreparedStatement stmt = null;
         PreparedStatement st = null;
         String username = tfEmail.getText();
         String password = tfMdp.getText() ;
+        
     
       
         String sql = "SELECT roles FROM Utilisateur WHERE email= ? ";
@@ -140,6 +144,8 @@ public class AuthentificationController extends Password implements Initializabl
                      
                      
                      
+                 } else {
+                     conLab.setText("Identifiants invalides");
                  }
                  
             }

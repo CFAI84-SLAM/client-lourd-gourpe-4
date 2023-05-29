@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientlourd.ClientsGuiController">
+   <children>
+      <TableView fx:id="tvClients" layoutX="14.0" layoutY="84.0" onMouseClicked="#handleMouseAction" prefHeight="370.0" prefWidth="1027.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="54.0" text="ID" />
+          <TableColumn fx:id="colNom" prefWidth="128.0" text="Nom" />
+            <TableColumn fx:id="colPrenom" prefWidth="131.0" text="Prénom" />
+            <TableColumn fx:id="colTel" prefWidth="162.0" text="Tel" />
+            <TableColumn fx:id="colEmail" prefWidth="175.0" text="Email" />
+            <TableColumn fx:id="colAdresse" minWidth="0.0" prefWidth="207.0" text="Adresse" />
+            <TableColumn fx:id="colDate" prefWidth="169.0" text="Date de naissance" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnHist" layoutX="54.0" layoutY="516.0" mnemonicParsing="false" onAction="#commandesHistorique" prefHeight="38.0" prefWidth="223.0" text="Voir l'historique des commandes" />
+      <Label layoutX="466.0" layoutY="28.0" text="Liste des clients">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnMenu" layoutX="30.0" layoutY="15.0" mnemonicParsing="false" onAction="#switchToMenu" text="Menu" />
+      <Button fx:id="btnDeco" layoutX="946.0" layoutY="16.0" mnemonicParsing="false" onAction="#disconnect" text="Déconnexion" />
+   </children>
+</AnchorPane>

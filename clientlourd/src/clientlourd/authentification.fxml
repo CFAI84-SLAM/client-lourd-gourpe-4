@@ -39,6 +39,7 @@
                </children>
             </VBox>
             <Button layoutX="212.0" layoutY="358.0" mnemonicParsing="false" onAction="#connect" prefHeight="45.0" prefWidth="95.0" text="Connexion" />
+            <Label fx:id="conLab" layoutX="204.0" layoutY="287.0" prefHeight="17.0" prefWidth="120.0" text="Identifiants invalides" textFill="RED" />
          </children>
       </Pane>
    </children>

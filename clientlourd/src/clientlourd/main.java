@@ -20,7 +20,7 @@ public class main extends Application {
        
         Parent root = FXMLLoader.load(getClass().getResource("authentification.fxml"));
         Scene scene = new Scene(root);
-        stage.setTitle("First Gui FX");
+        stage.setTitle("Fast Sushi CRUD");
         stage.setScene(scene);
         stage.show();
     }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clientlourd.AdminMenuController">
+   <children>
+      <Label layoutX="414.0" layoutY="42.0" text="Menu Principal">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnProduits" layoutX="123.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchToProduits" prefHeight="193.0" prefWidth="218.0" text="Accéder Tableau de bord des Produits" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnClients" layoutX="648.0" layoutY="231.0" mnemonicParsing="false" onAction="#switchToClients" prefHeight="187.0" prefWidth="210.0" text="Accéder à la liste des Clients et l'historique des commandes" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDeco" layoutX="826.0" layoutY="30.0" mnemonicParsing="false" onAction="#disconnect" text="Déconnexion" />
+   </children>
+</AnchorPane>

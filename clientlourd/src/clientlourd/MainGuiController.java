@@ -15,7 +15,11 @@ import javafx.collections.ObservableList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -23,6 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 /**
@@ -61,6 +66,15 @@ public class MainGuiController implements Initializable {
     private Button btnModifier;
     @FXML
     private Button btnSupprimer;
+    @FXML
+    private Button btnMenu;
+    @FXML
+    private Button btnDeco;
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
    
     /**
      * Initializes the controller class.
@@ -81,7 +95,7 @@ public class MainGuiController implements Initializable {
             updateRecord();
         } else if (event.getSource() == btnSupprimer) {
             deleteRecord();
-        }
+        } 
     }
     
     public Connection getConnection() {
@@ -130,6 +144,8 @@ public class MainGuiController implements Initializable {
         
         tvProduits.setItems(list);
     }
+    
+    
     
     
     private void insertRecord() {
@@ -207,10 +223,31 @@ public class MainGuiController implements Initializable {
     @FXML
     private void handleMouseAction(MouseEvent event) {
        Produits produit = tvProduits.getSelectionModel().getSelectedItem();
-       tfId.setText("" +produit.getId());
-       tfNom.setText(produit.getNom());
-       tfPrixHT.setText("" +produit.getPrixHT());
-       tfPhoto.setText(produit.getPhoto());
-       tfCategorie.setText(produit.getCategorie());
+       
+       if (produit != null) {
+            tfId.setText("" +produit.getId());
+            tfNom.setText(produit.getNom());
+            tfPrixHT.setText("" +produit.getPrixHT());
+            tfPhoto.setText(produit.getPhoto());
+            tfCategorie.setText(produit.getCategorie());
+       }
+       
     }
+    
+    public void switchToMenu(ActionEvent event) throws Exception {
+        root = FXMLLoader.load(getClass().getResource("AdminMenu.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }  
+    
+    
+    public void disconnect(ActionEvent event) throws Exception {
+        root = FXMLLoader.load(getClass().getResource("authentification.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }  
 }

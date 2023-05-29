@@ -14,13 +14,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -51,6 +56,12 @@ public class CommandesGuiController implements Initializable {
     private TableColumn<Commandes, String> colDatev;
     @FXML
     private TableColumn<Commandes, String> colUtilisateurv;
+    @FXML
+    private Button btnDeco;
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     /**
      * Initializes the controller class.
@@ -80,7 +91,7 @@ public class CommandesGuiController implements Initializable {
     public ObservableList<Commandes> getCommandesList() {
         ObservableList<Commandes> commandesList = FXCollections.observableArrayList();
         Connection conn = getConnection();
-        String query = "SELECT c.Id_Commandes, c.etat, c.date_de_commande, u.email  FROM Commandes c INNER JOIN Utilisateur u ON c.Id_Utilisateur=u.Id_Utilisateur WHERE c.etat='en préparation'";
+        String query = "SELECT c.Id_Commandes, c.etat, c.date_de_commande, c.Id_Utilisateur, u.email  FROM Commandes c INNER JOIN Utilisateur u ON c.Id_Utilisateur=u.Id_Utilisateur WHERE c.etat='en préparation'";
                 
         Statement st;
         ResultSet rs;
@@ -90,7 +101,7 @@ public class CommandesGuiController implements Initializable {
             rs = st.executeQuery(query);
             Commandes commandes;
             while (rs.next()) {
-                commandes = new Commandes(rs.getInt("Id_Commandes"), rs.getString("etat"), rs.getString("date_de_commande"), rs.getString("email"));
+                commandes = new Commandes(rs.getInt("Id_Commandes"), rs.getString("etat"), rs.getString("date_de_commande"), rs.getInt("Id_Utilisateur"),rs.getString("email"));
                 commandesList.add(commandes);
             }
         }catch(Exception e) {
@@ -102,7 +113,7 @@ public class CommandesGuiController implements Initializable {
     public ObservableList<Commandes> getCommandesVList() {
         ObservableList<Commandes> commandesVList = FXCollections.observableArrayList();
         Connection conn = getConnection();
-        String query = "SELECT c.Id_Commandes, c.etat, c.date_de_commande, u.email  FROM Commandes c INNER JOIN Utilisateur u ON c.Id_Utilisateur=u.Id_Utilisateur WHERE c.etat='validée'";
+        String query = "SELECT c.Id_Commandes, c.etat, c.date_de_commande, c.Id_Utilisateur, u.email  FROM Commandes c INNER JOIN Utilisateur u ON c.Id_Utilisateur=u.Id_Utilisateur WHERE c.etat='validée'";
                 
         Statement st;
         ResultSet rs;
@@ -112,7 +123,7 @@ public class CommandesGuiController implements Initializable {
             rs = st.executeQuery(query);
             Commandes commandes;
             while (rs.next()) {
-                commandes = new Commandes(rs.getInt("Id_Commandes"), rs.getString("etat"), rs.getString("date_de_commande"), rs.getString("email"));
+                commandes = new Commandes(rs.getInt("Id_Commandes"), rs.getString("etat"), rs.getString("date_de_commande"),rs.getInt("Id_Utilisateur"), rs.getString("email"));
                 commandesVList.add(commandes);
             }
         }catch(Exception e) {
@@ -177,4 +188,13 @@ public class CommandesGuiController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void disconnect(ActionEvent event) throws Exception {
+        root = FXMLLoader.load(getClass().getResource("authentification.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }  
 }

@@ -12,12 +12,14 @@ public class Commandes {
     private int id;
     private String etat;
     private String date;
+    private int idU;
     private String utilisateur;
 
-    public Commandes(int id, String etat, String date, String utilisateur) {
+    public Commandes(int id, String etat, String date, int idU, String utilisateur) {
         this.id = id;
         this.etat = etat;
         this.date = date;
+        this.idU = idU;
         this.utilisateur = utilisateur;
     }
 
@@ -31,6 +33,10 @@ public class Commandes {
 
     public String getDate() {
         return date;
+    }
+
+    public int getIdU() {
+        return idU;
     }
 
     public String getUtilisateur() {
@@ -51,6 +57,10 @@ public class Commandes {
 
     public void setUtilisateur(String utilisateur) {
         this.utilisateur = utilisateur;
+    }
+
+    public void setIdU(int idU) {
+        this.idU = idU;
     }
     
     
